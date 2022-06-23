@@ -5,7 +5,7 @@ import { Summary } from "../Summary/index";
 import { diceGen } from "../Hero/Data";
 import { MainWrapper, GameContainer, SummaryContainer } from "./MainElements";
 
-export const Main = () => {
+export const Tenzies = () => {
   const [isItTheEnd, setIsItTheEnd] = React.useState(false);
   const [dicesFromData, setDicesFromData] = React.useState(diceGen);
   const [count, setCount] = React.useState(0);
@@ -70,5 +70,3 @@ export const Main = () => {
     </MainWrapper>
   );
 };
-
-export default Main;

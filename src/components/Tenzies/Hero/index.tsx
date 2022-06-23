@@ -49,12 +49,6 @@ export const Hero = ({
   counter,
 }: HeroProps) => {
   // NAZWA FUNKCJI---|-------LEGENDA FUNKCJI PO KOLEJI------------------------
-  // colorToggle     |Zaznaczenie elementów (zmiana wartosci color na true/false)
-  // diceElements    |generowanie 10 elementów.
-  // randomBoxNumber |Wygenerowanie nowych wartości wewnątrz niezaznaczonych elementów
-  // useEffect       |Sprawdzanie co zmiane {diceFromData} czy gra została ukończona
-  // reset           |Zresetowanie gry
-  // NAZWA FUNKCJI---|-------LEGENDA FUNKCJI PO KOLEJI------------------------
 
   // Zmapowanie elementu przy pomocy map - to co zostanie zwrócone z map to pojedyncze obiekty, które zsumują się do tablicy wobec czego tylko w elemencie map muszę wrócić zedytowany obiekt.
   // Mapa zwraca zedytowany obiekt i po zmapowaniu wszystkich wraca mi to do SET STATE jako tablica.

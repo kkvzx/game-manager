@@ -10,7 +10,7 @@ export const AppWrapper = styled.div`
 `;
 
 export const App = styled.div`
-  width: 360px;
+  min-width: 360px;
   height: 640px;
   background: linear-gradient(180deg, #5d5fef 0%, #843ce0 100%);
   border-radius: 20px;

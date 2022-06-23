@@ -9,6 +9,7 @@ export const ButtonData = [
     borderStylingSquare: "2px solid #ffa800",
     value: "TicTacToe",
     path: "TicTacToe",
+    image: "../../img/tictactoe.png",
   },
   {
     id: 1,

@@ -3,11 +3,11 @@ import { App, AppWrapper } from "./GameManagerElements";
 import { HomePage } from "./HomePage/index";
 import { SelectGame } from "./SelectGame";
 import { TicTacToeSelect } from "./SelectGame/TicTacToeSelect";
-import { TicTacToeTwoPlayers } from "../components/TicTacToe2Players/MainBoard";
-import { Main as Tenzies } from "../components/Tenzies/Main/index";
-import { FunGenerator } from "../components/Fungenerator";
+import { TicTacToeTwoPlayers } from "../components/TicTacToe/TicTacToe2Players/MainBoard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { TicTacToeVsAi } from "../components/TicTacToeAi/MainBoard";
+import { TicTacToeVsAi } from "../components/TicTacToe/TicTacToeAi/MainBoard";
+import { Tenzies } from "../components/Tenzies/Main";
+import { Fungenerator } from "../components/Fungenerator/Main";
 
 export const GameManager = () => {
   return (
@@ -32,7 +32,7 @@ export const GameManager = () => {
             <Route path="/selectgame/tenzies" element={<Tenzies />}></Route>
             <Route
               path="/selectgame/fungenerator"
-              element={<FunGenerator />}
+              element={<Fungenerator />}
             ></Route>
             <Route path="/selectgame" element={<SelectGame />}></Route>
           </Routes>

@@ -3,7 +3,7 @@ import { Dice } from "./SingleDiceElements";
 
 interface MyProps {
   id: number;
-  color: boolean;
+  color: any;
   value: number;
   colorToggle: (id: number) => void;
 }

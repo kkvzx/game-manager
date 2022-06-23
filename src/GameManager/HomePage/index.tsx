@@ -5,8 +5,17 @@ import {
   LogoWrapper,
   StartGameButton,
   Logo,
+  StarsBottom,
+  StarsTop,
+  Star,
+  StarsMiddle,
+  LogoSpan,
+  Ufo,
+  Rocket,
 } from "./HomePageElements";
 const star = require("../../img/star.png");
+const ufo = require("../../img/ufo.png");
+const rocket = require("../../img/rocket.png");
 
 type HomePageProps = {
   gameStartedToggle: () => void;
@@ -18,26 +27,29 @@ export const HomePage = () => {
   return (
     <HomePageWrapper>
       <LogoWrapper>
-        <Logo color={"#f9d967"}>Tic</Logo>
-        <Logo color={"#e773ff"}>Tac</Logo>
-        <Logo color={"#4ffaff"}>Toe</Logo>
+        <Logo color={"#f9d967"}>
+          Ga<LogoSpan color={"#e773ff"}>me</LogoSpan>
+        </Logo>
+        <Logo color={"#4ffaff"}>Manager</Logo>
       </LogoWrapper>
-      {/* <StarsBottom>
-        <Img src={star} alt="star"></Img>
-        <Img src={star} alt="star"></Img>
-        <Img src={star} alt="star"></Img>
+      <StarsBottom>
+        <Star src={star} alt="star" size={"61px"} />
+        <Star src={star} alt="star" size={"61px"} />
+        <Star src={star} alt="star" size={"61px"} />
       </StarsBottom>
       <StarsTop>
-        <Img src={star} alt="star-top"></Img>
-        <Img src={star} alt="star-top"></Img>
+        <Star src={star} alt="star-top" size={"30px"} />
+        <Star src={star} alt="star-top" size={"30px"} />
       </StarsTop>
-      <StarsBot>
-        <Img src={star} alt="star-bot"></Img>
-        <Img src={star} alt="star-bot"></Img>
-      </StarsBot> */}
+      <StarsMiddle>
+        <Star src={star} alt="star-bot" size={"30px"} />
+        <Star src={star} alt="star-bot" size={"30px"} />
+      </StarsMiddle>
       <StartGameButton onClick={() => navigate("/selectgame")}>
         Let's play
       </StartGameButton>
+      <Ufo src={ufo} alt="ufo-png" />
+      <Rocket src={rocket} alt="rocke-png" />
     </HomePageWrapper>
   );
 };

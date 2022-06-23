@@ -5,6 +5,8 @@ export const SelectGameWrapper = styled.div`
   padding: 40px;
   box-sizing: border-box;
   overflow: hidden;
+  position: relative;
+  z-index: 0;
 `;
 export const SelectGameHeader = styled.h1`
   color: white;
@@ -30,12 +32,17 @@ export const SingleButton = styled.div`
   margin: 9px 0;
 `;
 
-export const Circle = styled.div<{ backgr: string; borderStyling: string }>`
+export const Circle = styled.div<{
+  backgr: string;
+  borderStyling: string;
+}>`
   width: 100px;
   height: 100px;
   border-radius: 100%;
-  z-index: 1;
-
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: ${({ backgr }) => backgr};
   border: ${({ borderStyling }) => borderStyling};
 `;
@@ -59,6 +66,20 @@ export const Square = styled.div<{
   overflow: hidden;
   box-sizing: border-box;
   cursor: pointer;
+  z-index: 2;
+
   background: ${({ backgr }) => backgr};
   border: ${({ borderStyling }) => borderStyling};
+`;
+export const GameLogo = styled.img`
+  width: 70px;
+  z-index: 999;
+`;
+
+export const SmallGamePad = styled.img`
+  width: 140px;
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
 `;
