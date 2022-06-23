@@ -12,6 +12,12 @@ export const AppWrapper = styled.div`
 export const App = styled.div`
   min-width: 360px;
   height: 640px;
-  background: linear-gradient(180deg, #5d5fef 0%, #843ce0 100%);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(44, 47, 72, 1) 64%,
+    rgba(50, 0, 97, 1) 100%
+  );
   border-radius: 20px;
 `;

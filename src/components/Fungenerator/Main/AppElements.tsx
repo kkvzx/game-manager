@@ -13,7 +13,14 @@ export const AppWrapper = styled.div`
   justify-content: center;
 `;
 export const AppSection = styled.div`
-  background: var(--background-color);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    180deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(44, 47, 72, 1) 64%,
+    rgba(50, 0, 97, 1) 100%
+  );
+  /* background: linear-gradient(180deg, #5d5fef 0%, #843ce0 100%); */
   width: 650px;
   height: 650px;
   display: flex;
