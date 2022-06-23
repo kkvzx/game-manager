@@ -19,7 +19,7 @@ export const GameContainer = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: var(--main-color);
-  border-radius: 10px;
+  border-radius: 20px;
   position: relative;
 `;
 export const SummaryContainer = styled(GameContainer)``;
