@@ -7,16 +7,17 @@ export const ButtonData = [
     borderStylingCircle: "1px solid #ff8a00",
     backgrSquare: "#f3501d",
     borderStylingSquare: "2px solid #ffa800",
-    value: "vs Ai",
+    value: "TicTacToe",
+    path: "TicTacToe",
   },
   {
     id: 1,
     backgrCircle: "#eb00ff",
     borderStylingCircle: "1px solid #ff00a8",
-
     backgrSquare: "#7213eb",
     borderStylingSquare: "2px solid #eb00ff",
-    value: "Two players",
+    value: "Tenzies",
+    path: "tenzies",
   },
   {
     id: 2,
@@ -24,7 +25,8 @@ export const ButtonData = [
     borderStylingCircle: "1px solid #843ce0",
     backgrSquare: "#451cbb",
     borderStylingSquare: "2px solid #843ce0",
-    value: "Tenzies",
+    value: "FunGenerator",
+    path: "fungenerator",
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ export const ButtonData = [
     borderStylingCircle: "1px solid #5d5fef",
     backgrSquare: "#33a6bf",
     borderStylingSquare: "2px solid #5d5fef",
-    value: "FunGenerator",
+    value: "Flappy Bird",
+    path: "flappybird",
   },
 ];

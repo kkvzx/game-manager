@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ScoreboardContainer = styled.div`
   width: 300px;
   height: 100px;
-  margin: 45px 0 50px 0;
+  margin: 45px 0 15px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

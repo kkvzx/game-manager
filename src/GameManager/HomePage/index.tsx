@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   HomePageWrapper,
   LogoWrapper,
@@ -11,7 +12,9 @@ type HomePageProps = {
   gameStartedToggle: () => void;
 };
 
-export const HomePage = ({ gameStartedToggle }: HomePageProps) => {
+export const HomePage = () => {
+  const navigate = useNavigate();
+
   return (
     <HomePageWrapper>
       <LogoWrapper>
@@ -32,7 +35,7 @@ export const HomePage = ({ gameStartedToggle }: HomePageProps) => {
         <Img src={star} alt="star-bot"></Img>
         <Img src={star} alt="star-bot"></Img>
       </StarsBot> */}
-      <StartGameButton onClick={() => gameStartedToggle()}>
+      <StartGameButton onClick={() => navigate("/selectgame")}>
         Let's play
       </StartGameButton>
     </HomePageWrapper>

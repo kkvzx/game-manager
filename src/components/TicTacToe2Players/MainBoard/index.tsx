@@ -1,13 +1,13 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { Scoreboard } from "../Scoreboard";
-import { Gamingboard } from "../GamingBoard/Gamingboard";
+import { Scoreboard } from "../../TicTacToeAi/Scoreboard";
 import {
   GamePage,
   Summary,
   SummaryHeader,
   NewGameButton,
-} from "./MainBoardElements";
+} from "../../TicTacToeAi/MainBoard/MainBoardElements";
+import { Gamingboard } from "../../TicTacToeAi/GamingBoard/Gamingboard";
+import { useNavigate } from "react-router-dom";
 
 // Winning conditions
 const lines = [
@@ -21,7 +21,7 @@ const lines = [
   [2, 4, 6],
 ];
 
-export const TicTacToeVsAi = () => {
+export const TicTacToeTwoPlayers = () => {
   // states
   const [squares, setSquares] = React.useState<boolean[]>(
     new Array(9).fill(null)
@@ -31,26 +31,32 @@ export const TicTacToeVsAi = () => {
   const [draw, setDraw] = React.useState<boolean>(false);
   const navigate = useNavigate();
 
+  // -------------FUNCTIONS-----------
   // Handle square click
   const handleSquareClick = (index: number): void => {
-    const isPlayerTurn =
+    const isFirstPlayerTurn =
       squares.filter((square) => square !== null).length % 2 === 0;
+    let newSquares = squares;
+
     if (
-      isPlayerTurn &&
+      isFirstPlayerTurn &&
       squares[index] != false &&
       typeof winner === "undefined"
     ) {
-      let newSquares = squares;
       newSquares[index] = true;
+      setSquares([...newSquares]);
+    } else if (
+      !isFirstPlayerTurn &&
+      squares[index] != true &&
+      typeof winner === "undefined"
+    ) {
+      newSquares[index] = false;
       setSquares([...newSquares]);
     }
   };
 
   // Moves of computer and checking winning conditions
   React.useEffect(() => {
-    const isComputerTurn =
-      squares.filter((square) => square !== null).length % 2 === 1;
-
     const linesThatAre = (a: any, b: any, c: any) => {
       return lines.filter((squareIndexes) => {
         const squareValues = squareIndexes.map((index) => squares[index]);
@@ -60,55 +66,16 @@ export const TicTacToeVsAi = () => {
         );
       });
     };
-    const emptyIndexes = squares
-      .map((square, index: number) => (square === null ? index : null))
-      .filter((object) => object != null);
-    const playerWon = linesThatAre(true, true, true).length > 0;
-    if (playerWon) {
+
+    const firstPlayerWon = linesThatAre(true, true, true).length > 0;
+    if (firstPlayerWon) {
       setWinner(true);
     }
-    const computerWon = linesThatAre(false, false, false).length > 0;
-    if (computerWon) {
+    const secondPlayerWon = linesThatAre(false, false, false).length > 0;
+    if (secondPlayerWon) {
       setWinner(false);
     }
-    const putComputerAt = (index: any) => {
-      if (typeof winner === "undefined" && draw === false) {
-        let newSquares = squares;
-        newSquares[index] = false;
-        setSquares([...newSquares]);
-      }
-    };
 
-    if (isComputerTurn) {
-      const winningLines = linesThatAre(false, false, null);
-      if (winningLines.length > 0) {
-        const winningIndex = winningLines[0].filter(
-          (index) => squares[index] === null
-        )[0];
-        putComputerAt(winningIndex);
-        return;
-      }
-
-      const linesToBlock = linesThatAre(true, true, null);
-      if (linesToBlock.length > 0) {
-        const blockIndex = linesToBlock[0].filter(
-          (index) => squares[index] === null
-        )[0];
-        putComputerAt(blockIndex);
-        return;
-      }
-
-      const linesToContinue = linesThatAre(false, null, null);
-      if (linesToContinue.length > 0) {
-        putComputerAt(
-          linesToContinue[0].filter((index) => squares[index] === null)[0]
-        );
-        return;
-      }
-      const randomIndex =
-        emptyIndexes[Math.ceil(Math.random() * emptyIndexes.length)];
-      putComputerAt(randomIndex);
-    }
     if (squares.filter((singleSquare) => singleSquare === null).length === 0) {
       setDraw(true);
       return;
@@ -140,7 +107,7 @@ export const TicTacToeVsAi = () => {
       {(typeof winner != "undefined" || draw == true) && (
         <Summary>
           <SummaryHeader>
-            {winner ? "You've won!" : draw ? "It's a draw" : "Computer won :("}
+            {winner ? "Player X won!" : draw ? "It's a draw" : "Player O won"}
           </SummaryHeader>
           <NewGameButton onClick={() => newGame()}>New Game</NewGameButton>
           <NewGameButton onClick={() => backToMenu()}>
@@ -149,11 +116,6 @@ export const TicTacToeVsAi = () => {
         </Summary>
       )}
       <Gamingboard squares={squares} handleSquareClick={handleSquareClick} />
-      {/* {(typeof winner != "undefined" || draw == true) && (
-        <NewGameButton onClick={() => props.gameChooseToogle()}>
-          Back to menu
-        </NewGameButton>
-      )} */}
     </GamePage>
   );
 };
