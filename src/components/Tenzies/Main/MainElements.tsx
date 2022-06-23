@@ -11,9 +11,9 @@ export const MainWrapper = styled.div`
   background: var(--bck-color);
 `;
 export const GameContainer = styled.div`
-  max-width: 800px;
-  min-width: 330px;
-  height: 400px;
+  max-width: 100%;
+  min-width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
