@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "../GlobalStyling.css";
 
 export const HeaderWrapper = styled.div`
   text-align: center;

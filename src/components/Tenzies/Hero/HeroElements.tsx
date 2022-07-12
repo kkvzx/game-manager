@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "../GlobalStyling.css";
 
 export const HeroWrapper = styled.div`
   font-family: "Inter", sans-serif;

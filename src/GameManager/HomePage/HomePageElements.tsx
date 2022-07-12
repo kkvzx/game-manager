@@ -17,6 +17,7 @@ export const Logo = styled.h1<{ color: string }>`
   font-size: 5rem;
   font-family: "Oswald", sans-serif;
   line-height: 100%;
+  letter-spacing: -4px;
   color: ${({ color }) => color};
 `;
 export const LogoSpan = styled.span<{ color: string }>`

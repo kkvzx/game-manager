@@ -7,7 +7,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TicTacToeVsAi } from "../components/TicTacToe/TicTacToeAi/MainBoard";
 import { Tenzies } from "../components/Tenzies/Main";
 import { Fungenerator } from "../components/Fungenerator/Main";
-import { FlappyBird } from "../components/Fungenerator/FlappyBird/Main";
+import { FlappyBird } from "../components/FlappyBird/Main";
+import { GlobalStyles } from "./GlobalStyling";
 
 export const GameManager = () => {
   return (
@@ -39,6 +40,7 @@ export const GameManager = () => {
           </Routes>
         </Router>
       </App>
+      <GlobalStyles />
     </AppWrapper>
   );
 };

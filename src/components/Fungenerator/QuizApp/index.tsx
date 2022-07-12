@@ -3,13 +3,24 @@ import { nanoid } from "nanoid";
 import { SingleQuestion } from "./SingleQuestion";
 import { masterMixer } from "../masterMIxer";
 import {
+  GoBackArrow,
   QuestionsWrapper,
   Scoreboard,
   ScoreboardButton,
   ScoreboardP,
 } from "./QuizAppElements";
 
-export const QuizApp = () => {
+interface quizAppProps {
+  difficultyLevel: string | undefined;
+  questionsCategory: string | undefined;
+  startGameToggle: () => void;
+}
+
+export const QuizApp = ({
+  difficultyLevel,
+  questionsCategory,
+  startGameToggle,
+}: quizAppProps) => {
   const [apiData, setApiData] = React.useState<any[]>([]);
   const [userChecked, setUserChecked] = React.useState<boolean>(false);
   const [choosedAns, setChoosedAns] = React.useState<string[]>([]);
@@ -18,26 +29,97 @@ export const QuizApp = () => {
 
   // Getting the data from API and creating additional property with all the answers ("allAnswers")
   React.useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=5")
-      .then((response) => response.json())
-      .then((data) => {
-        setApiData(data.results);
-        setApiData((prevState) =>
-          prevState.map((singleObj) => ({
-            ...singleObj,
-            allAnswers: masterMixer(
-              singleObj.incorrect_answers,
-              singleObj.correct_answer
-            ),
-          }))
-        );
-      })
-      .catch((error) => {
-        alert(
-          "Problem occured while getting the data. Please try to restart the game"
-        );
-      });
+    if (difficultyLevel === "any" || difficultyLevel === undefined) {
+      if (questionsCategory === undefined) {
+        fetch("https://opentdb.com/api.php?amount=5")
+          .then((response) => response.json())
+          .then((data) => {
+            setApiData(data.results);
+            setApiData((prevState) =>
+              prevState.map((singleObj) => ({
+                ...singleObj,
+                allAnswers: masterMixer(
+                  singleObj.incorrect_answers,
+                  singleObj.correct_answer
+                ),
+              }))
+            );
+          })
+          .catch((error) => {
+            alert(
+              "Problem occured while getting the data. Please try to restart the game"
+            );
+          });
+      } else {
+        fetch(
+          `https://opentdb.com/api.php?amount=5&category=${questionsCategory}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            setApiData(data.results);
+            setApiData((prevState) =>
+              prevState.map((singleObj) => ({
+                ...singleObj,
+                allAnswers: masterMixer(
+                  singleObj.incorrect_answers,
+                  singleObj.correct_answer
+                ),
+              }))
+            );
+          })
+          .catch((error) => {
+            alert(
+              "Problem occured while getting the data. Please try to restart the game"
+            );
+          });
+      }
+    } else if (questionsCategory === undefined) {
+      fetch(
+        `https://opentdb.com/api.php?amount=5&difficulty=${difficultyLevel}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setApiData(data.results);
+          setApiData((prevState) =>
+            prevState.map((singleObj) => ({
+              ...singleObj,
+              allAnswers: masterMixer(
+                singleObj.incorrect_answers,
+                singleObj.correct_answer
+              ),
+            }))
+          );
+        })
+        .catch((error) => {
+          alert(
+            "Problem occured while getting the data. Please try to restart the game"
+          );
+        });
+    } else {
+      fetch(
+        `https://opentdb.com/api.php?amount=5&category=${questionsCategory}&difficulty=${difficultyLevel}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setApiData(data.results);
+          setApiData((prevState) =>
+            prevState.map((singleObj) => ({
+              ...singleObj,
+              allAnswers: masterMixer(
+                singleObj.incorrect_answers,
+                singleObj.correct_answer
+              ),
+            }))
+          );
+        })
+        .catch((error) => {
+          alert(
+            "Problem occured while getting the data. Please try to restart the game"
+          );
+        });
+    }
   }, []);
+  console.log(apiData);
 
   // Saving choosed Answer - Functionality after submit
   const choosedAnsToggle = (ans: string, index: number) => {
@@ -107,6 +189,8 @@ export const QuizApp = () => {
     <>
       <QuestionsWrapper>{htmlElements}</QuestionsWrapper>
       <Scoreboard>
+        <GoBackArrow onClick={() => startGameToggle()} />
+
         {warning && (
           <ScoreboardP>In order to proceed answer to all questions</ScoreboardP>
         )}

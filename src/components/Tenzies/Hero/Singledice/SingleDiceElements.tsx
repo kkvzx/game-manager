@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "../../GlobalStyling.css";
 
 export const Dice = styled.div<{ color: any }>`
   width: 35.84px;

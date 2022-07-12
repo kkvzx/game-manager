@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import "../GlobalStyling.css";
 
 export const SummaryWrapper = styled.div`
   width: 100%;

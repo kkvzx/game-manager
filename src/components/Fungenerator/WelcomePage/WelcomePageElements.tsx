@@ -27,6 +27,8 @@ export const StartGameButton = styled.button`
   font-size: 16px;
   cursor: pointer;
   border: 2px solid var(--secondary-color);
+  transition: 0.3s all;
+
   &:hover {
     border: 2px solid #00ebff;
   }
