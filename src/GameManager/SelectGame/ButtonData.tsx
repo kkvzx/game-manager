@@ -29,13 +29,4 @@ export const ButtonData = [
     value: "FunGenerator",
     path: "fungenerator",
   },
-  {
-    id: 3,
-    backgrCircle: "#4c9bd5",
-    borderStylingCircle: "1px solid #5d5fef",
-    backgrSquare: "#33a6bf",
-    borderStylingSquare: "2px solid #5d5fef",
-    value: "Flappy Bird",
-    path: "flappybird",
-  },
 ];

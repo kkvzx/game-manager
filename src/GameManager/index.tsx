@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TicTacToeVsAi } from "../components/TicTacToe/TicTacToeAi/MainBoard";
 import { Tenzies } from "../components/Tenzies/Main";
 import { Fungenerator } from "../components/Fungenerator/Main";
-import { FlappyBird } from "../components/FlappyBird/Main";
 import { GlobalStyles } from "./GlobalStyling";
 
 export const GameManager = () => {
@@ -35,7 +34,6 @@ export const GameManager = () => {
               path="/selectgame/fungenerator"
               element={<Fungenerator />}
             ></Route>
-            <Route path="selectgame/flappybird" element={<FlappyBird />} />
             <Route path="/selectgame" element={<SelectGame />}></Route>
           </Routes>
         </Router>
